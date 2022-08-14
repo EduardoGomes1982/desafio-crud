@@ -1,4 +1,4 @@
-package com.devsuperior.desafiocrud.resource.exceptions;
+package com.devsuperior.desafiocrud.resources.exceptions;
 
 import java.time.Instant;
 
