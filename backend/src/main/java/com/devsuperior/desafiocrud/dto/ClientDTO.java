@@ -3,16 +3,25 @@ package com.devsuperior.desafiocrud.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
+
 import com.devsuperior.desafiocrud.entities.Client;
 
 public class ClientDTO  implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	
+	@NotBlank
 	private String name;
+	
 	private String cpf;
 	private Double income;
+	
+	@PastOrPresent
 	private Instant birthDate;
+	
 	private Integer children;
 	
 	public ClientDTO() {

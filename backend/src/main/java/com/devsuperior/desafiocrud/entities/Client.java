@@ -10,17 +10,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
 
 @Entity
 @Table(name = "tb_client")
 public class Client implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@NotBlank
 	private String name;
+	
 	private String cpf;
 	private Double income;
+	
+	@Column(columnDefinition = "timestamp with time zone")
+	@PastOrPresent
 	private Instant birthDate;
+	
 	private Integer children;
 	
 	public Client() {
@@ -35,8 +46,6 @@ public class Client implements Serializable {
 		this.children = children;
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}
@@ -69,7 +78,6 @@ public class Client implements Serializable {
 		this.income = income;
 	}
 
-	@Column(columnDefinition = "timestamp with time zone")
 	public Instant getBirthDate() {
 		return birthDate;
 	}
